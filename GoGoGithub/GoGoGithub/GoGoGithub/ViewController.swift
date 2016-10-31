@@ -10,6 +10,16 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    
+    @IBAction func requestTokenPressed(_ sender: AnyObject) {
+        
+        let parameters = ["scope": "user:email,repo"]
+        
+        GitHubService.shared.oAuthWith(parameters: parameters)
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
