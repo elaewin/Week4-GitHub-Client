@@ -16,10 +16,17 @@ class ViewController: UIViewController {
         let parameters = ["scope": "user:email,repo"]
         
         GitHubService.shared.oAuthWith(parameters: parameters)
-        
     }
     
-    
+    @IBAction func printTokenPressed(_ sender: AnyObject) {
+        
+        if let token = UserDefaults.standard.getAccessToken() {
+            print("Access token is: \(token)")
+        } else {
+            print("No token found!")
+        }
+    }
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
