@@ -14,6 +14,7 @@
 		55E696CA1DC7A92A00BD8757 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E696C81DC7A92A00BD8757 /* LaunchScreen.storyboard */; };
 		55E696D61DC7C22900BD8757 /* GitHubService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E696D51DC7C22900BD8757 /* GitHubService.swift */; };
 		55E696D81DC7C45800BD8757 /* GitHubCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E696D71DC7C45800BD8757 /* GitHubCredentials.swift */; };
+		55E696DA1DC7E28F00BD8757 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E696D91DC7E28F00BD8757 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		55E696CB1DC7A92A00BD8757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		55E696D51DC7C22900BD8757 /* GitHubService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubService.swift; sourceTree = "<group>"; };
 		55E696D71DC7C45800BD8757 /* GitHubCredentials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubCredentials.swift; sourceTree = "<group>"; };
+		55E696D91DC7E28F00BD8757 /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 		55E696D41DC7AA2200BD8757 /* Supporting */ = {
 			isa = PBXGroup;
 			children = (
+				55E696D91DC7E28F00BD8757 /* Extensions.swift */,
 				55E696D71DC7C45800BD8757 /* GitHubCredentials.swift */,
 				55E696BF1DC7A92A00BD8757 /* AppDelegate.swift */,
 				55E696C61DC7A92A00BD8757 /* Assets.xcassets */,
@@ -175,6 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55E696DA1DC7E28F00BD8757 /* Extensions.swift in Sources */,
 				55E696C21DC7A92A00BD8757 /* ViewController.swift in Sources */,
 				55E696D61DC7C22900BD8757 /* GitHubService.swift in Sources */,
 				55E696D81DC7C45800BD8757 /* GitHubCredentials.swift in Sources */,

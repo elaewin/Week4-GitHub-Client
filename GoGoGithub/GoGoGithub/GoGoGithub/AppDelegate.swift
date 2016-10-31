@@ -19,16 +19,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    // OPEN URL
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
         
 //        let code = try? GitHubService.shared.codeFrom(url: url)
         
-        do {
-            let code = try GitHubService.shared.codeFrom(url: url)
+        GitHubService.shared.tokenRequestFor(url: url, options: .userDefaults) { (success) in
             
-            print("Code: \(code)")
-        } catch {
-            print(error)
+            
+            
         }
         
         return true
