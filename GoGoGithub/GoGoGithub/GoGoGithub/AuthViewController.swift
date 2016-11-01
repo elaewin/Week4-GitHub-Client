@@ -9,7 +9,6 @@
 import UIKit
 
 class AuthViewController: UIViewController {
-
     
     @IBAction func loginButtonPressed(_ sender: Any) {
         
@@ -24,4 +23,9 @@ class AuthViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    func dismissAuthController() {
+        self.view.removeFromSuperview()
+        self.removeFromParentViewController()
+    }
+    
 }
