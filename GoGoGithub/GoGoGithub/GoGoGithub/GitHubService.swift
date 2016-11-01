@@ -49,6 +49,7 @@ class GitHubService {
     
     // MARK: Class funcs
     func fetchRepos(completion: @escaping RepositoriesCompletion) {
+        self.configure()
         
         self.urlComponents.path = "/user/repos"
         

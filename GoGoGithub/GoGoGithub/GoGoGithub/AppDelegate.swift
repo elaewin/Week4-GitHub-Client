@@ -1,4 +1,4 @@
-//
+ //
 //  AppDelegate.swift
 //  GoGoGithub
 //
@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GitHubService.shared.tokenRequestFor(url: url, options: .userDefaults) { (success) in
             if let authController = self.authController, let homeController = self.homeController {
                 authController.dismissAuthController()
-//                homeController.update()
+                homeController.update()
             }
         }
         return true
