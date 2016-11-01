@@ -8,6 +8,15 @@
 
 import UIKit
 
+
+extension UIResponder {
+    
+    static var identifier: String {
+        return String(describing: self)
+    }
+}
+
+
 extension UserDefaults {
     
     func getAccessToken() -> String? {

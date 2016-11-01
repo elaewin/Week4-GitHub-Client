@@ -24,16 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
 //        let code = try? GitHubService.shared.codeFrom(url: url)
         
-        GitHubService.shared.tokenRequestFor(url: url, options: .userDefaults) { (success) in
-            
-            
-            
-        }
-        
+        GitHubService.shared.tokenRequestFor(url: url, options: .userDefaults) { (success) in }
         return true
-        
-    }
-
+        }
 
 }
 
