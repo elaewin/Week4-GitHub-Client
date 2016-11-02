@@ -10,9 +10,24 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    @IBOutlet weak var tableView: UITableView!
+    
+    var allRepos = [Repository]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.tableView.dataSource = self
+        
+        self.tableView.estimatedRowHeight = 50
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+        
+        self.tableView.delegate = self
+        
 //        update()
         // Do any additional setup after loading the view.
     }
@@ -35,10 +50,30 @@ class HomeViewController: UIViewController {
             
             if let repositories = repositories {
                 for repository in repositories {
-                    print(repository.name)
+                    self.allRepos.append(repository)
                 }
             }
         }
+    }
+    
+}
+
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.allRepos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "RepoTableViewCell", for: indexPath) as? RepoTableViewCell
+        
+        let currentRepo = allRepos[indexPath.row]
+        
+        cell?.repoNameLabel.text = currentRepo.name
+        cell?.repoLanguageLabel.text = currentRepo.language
+        cell?.repoDescriptionLabel.text = currentRepo.description
+        
+        return cell!
     }
     
 }
