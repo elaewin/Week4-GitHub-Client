@@ -67,7 +67,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="98" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lxj-7i-i8o">
-                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="595"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="RepoTableViewCell" rowHeight="98" id="18f-MW-zgC" customClass="RepoTableViewCell" customModule="GoGoGithub" customModuleProvider="target">
@@ -90,7 +90,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Repo Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bJg-pJ-omZ">
-                                                    <rect key="frame" x="8" y="66" width="359" height="23.5"/>
+                                                    <rect key="frame" x="8" y="66" width="359" height="24"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -117,16 +117,24 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Bk3-lg-LSW">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lxj-7i-i8o" firstAttribute="leading" secondItem="tfj-gD-TeU" secondAttribute="leading" id="Czy-jI-dXO"/>
-                            <constraint firstItem="lxj-7i-i8o" firstAttribute="top" secondItem="ag1-HH-1cw" secondAttribute="bottom" id="HFy-ri-QyJ"/>
-                            <constraint firstItem="Hbm-x5-fLY" firstAttribute="top" secondItem="lxj-7i-i8o" secondAttribute="bottom" id="X6f-lx-Fa7"/>
-                            <constraint firstAttribute="trailing" secondItem="lxj-7i-i8o" secondAttribute="trailing" id="oVp-hB-1HZ"/>
+                            <constraint firstItem="Bk3-lg-LSW" firstAttribute="leading" secondItem="tfj-gD-TeU" secondAttribute="leading" id="0Ks-gj-jAF"/>
+                            <constraint firstAttribute="trailing" secondItem="Bk3-lg-LSW" secondAttribute="trailing" id="7LS-u4-s1Z"/>
+                            <constraint firstItem="lxj-7i-i8o" firstAttribute="leading" secondItem="tfj-gD-TeU" secondAttribute="leading" id="Anu-av-q4F"/>
+                            <constraint firstItem="Hbm-x5-fLY" firstAttribute="top" secondItem="lxj-7i-i8o" secondAttribute="bottom" id="ED7-8I-ap1"/>
+                            <constraint firstAttribute="trailing" secondItem="lxj-7i-i8o" secondAttribute="trailing" id="Icw-Jg-3CB"/>
+                            <constraint firstItem="Bk3-lg-LSW" firstAttribute="top" secondItem="ag1-HH-1cw" secondAttribute="bottom" id="PEd-cO-hwm"/>
+                            <constraint firstItem="lxj-7i-i8o" firstAttribute="top" secondItem="Bk3-lg-LSW" secondAttribute="bottom" constant="8" id="SJO-hC-0ye"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="searchBar" destination="Bk3-lg-LSW" id="DD5-9D-tTY"/>
                         <outlet property="tableView" destination="lxj-7i-i8o" id="gt9-bW-VMs"/>
                     </connections>
                 </viewController>

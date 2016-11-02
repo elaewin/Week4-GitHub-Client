@@ -12,7 +12,15 @@ class HomeViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var allRepos = [Repository]() {
+        didSet {
+            self.tableView.reloadData()
+        }
+    }
+    
+    var filterResults = [Repository]() {
         didSet {
             self.tableView.reloadData()
         }
@@ -27,6 +35,8 @@ class HomeViewController: UIViewController {
         self.tableView.rowHeight = UITableViewAutomaticDimension
         
         self.tableView.delegate = self
+        
+        self.searchBar.delegate = self
         
 //        update()
         // Do any additional setup after loading the view.
@@ -55,25 +65,41 @@ class HomeViewController: UIViewController {
             }
         }
     }
-    
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if searchBar.text != "" {
+            return self.filterResults.count
+        }
         return self.allRepos.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = self.tableView.dequeueReusableCell(withIdentifier: "RepoTableViewCell", for: indexPath) as? RepoTableViewCell
+        let cell = self.tableView.dequeueReusableCell(withIdentifier: "RepoTableViewCell", for: indexPath) as! RepoTableViewCell
         
-        let currentRepo = allRepos[indexPath.row]
+        var currentRepo: Repository
         
-        cell?.repoNameLabel.text = currentRepo.name
-        cell?.repoLanguageLabel.text = currentRepo.language
-        cell?.repoDescriptionLabel.text = currentRepo.description
+        if searchBar.text != "" {
+            currentRepo = filterResults[indexPath.row]
+        } else {
+            currentRepo = allRepos[indexPath.row]
+        }
         
-        return cell!
+        cell.repoNameLabel.text = currentRepo.name
+        cell.repoLanguageLabel.text = currentRepo.language
+        cell.repoDescriptionLabel.text = currentRepo.description
+        
+        return cell
     }
-    
+}
+
+extension HomeViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        let text = searchText.lowercased()
+        filterResults = self.allRepos.filter { $0.name.lowercased().contains(text) }
+        
+        self.tableView.reloadData()
+    }
 }

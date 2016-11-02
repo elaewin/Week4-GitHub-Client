@@ -27,8 +27,4 @@ class RepoTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    func setupRepoCell() {
-        
-    }
-    
 }
