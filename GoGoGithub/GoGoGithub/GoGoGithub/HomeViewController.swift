@@ -14,6 +14,8 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     
+    let customTransition = CustomTransition()
+    
     var allRepos = [Repository]() {
         didSet {
             self.tableView.reloadData()
@@ -26,17 +28,15 @@ class HomeViewController: UIViewController {
         }
     }
     
+    // MARK: Override functions
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.dataSource = self
-        
-        self.tableView.estimatedRowHeight = 50
-        self.tableView.rowHeight = UITableViewAutomaticDimension
-        
-        self.tableView.delegate = self
-        
+        setUpTableView()
         self.searchBar.delegate = self
+        
+        let nib = UINib(nibName: "repoCell", bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: RepoTableViewCell.identifier)
         
 //        update()
         // Do any additional setup after loading the view.
@@ -53,6 +53,40 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        
+        var currentReposArray = [Repository]()
+        
+        if self.filterResults.isEmpty {
+            currentReposArray = allRepos
+        } else {
+            currentReposArray = filterResults
+        }
+        
+        let selectedIndex = tableView.indexPathForSelectedRow!.row
+        let selectedRepo = currentReposArray[selectedIndex]
+        
+        if segue.identifier == RepoDetailViewController.identifier {
+            
+            if let destinationController = segue.destination as? RepoDetailViewController {
+                destinationController.transitioningDelegate = self
+                destinationController.repo = selectedRepo
+            }
+        }
+
+    }
+    
+    // MARK: Other functions
+    
+    func setUpTableView() {
+        self.tableView.dataSource = self
+        self.tableView.delegate = self
+        
+        self.tableView.estimatedRowHeight = 50
+        self.tableView.rowHeight = UITableViewAutomaticDimension
+    }
+    
     // This will be used later to update repos after a successful login.
     func update() {
         
@@ -65,6 +99,7 @@ class HomeViewController: UIViewController {
             }
         }
     }
+    
 }
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
@@ -86,20 +121,36 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         } else {
             currentRepo = allRepos[indexPath.row]
         }
-        
-        cell.repoNameLabel.text = currentRepo.name
-        cell.repoLanguageLabel.text = currentRepo.language
-        cell.repoDescriptionLabel.text = currentRepo.description
+
+        cell.repo = currentRepo
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.performSegue(withIdentifier: RepoDetailViewController.identifier, sender: nil)
     }
 }
 
 extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         let text = searchText.lowercased()
-        filterResults = self.allRepos.filter { $0.name.lowercased().contains(text) }
+        if text != "" {
+            filterResults = self.allRepos.filter { $0.name.lowercased().contains(text) }
+        } else {
+            searchBar.resignFirstResponder()
+        }
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+    }
+}
+
+extension HomeViewController: UIViewControllerTransitioningDelegate {
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
-        self.tableView.reloadData()
+        return self.customTransition
     }
 }
