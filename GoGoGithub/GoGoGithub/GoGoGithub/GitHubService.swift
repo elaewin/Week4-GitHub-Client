@@ -12,6 +12,7 @@ let kBaseUrlString = "https://github.com/login/oauth"
 
 typealias GitHubAuthCompletion = (Bool) -> ()
 typealias RepositoriesCompletion = ([Repository]?) -> ()
+typealias UserSearchCompletion = ([User]?) -> ()
 
 
 // MARK: Enums
@@ -47,7 +48,40 @@ class GitHubService {
         }
     }
     
-    // MARK: Class funcs
+    // MARK: Functions
+    func searchUsersWith(searchTerm: String, completion: @escaping UserSearchCompletion) {
+        
+        self.urlComponents.path = "/search/users"
+        
+        let searchQueryItem = URLQueryItem(name: "q", value: searchTerm)
+        
+        self.urlComponents.queryItems?.append(searchQueryItem)
+        
+        guard let url = self.urlComponents.url else { completion(nil); return }
+        
+        self.session.dataTask(with: url, completionHandler: { (data, response, error) in
+            if error != nil { completion(nil); return }
+            if let data = data {
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any], let items = json["items"] as? [[String: Any]] {
+                        var searchedUsers = [User]()
+                        for userJSON in items {
+                            if let user = User(json: userJSON) {
+                                searchedUsers.append(user)
+                            }
+                        }
+                        OperationQueue.main.addOperation {
+                            completion(searchedUsers)
+                        }
+                    }
+                } catch {
+                    print(error)
+                }
+            } else { completion(nil); return }
+            
+        }).resume()
+    }
+    
     func fetchRepos(completion: @escaping RepositoriesCompletion) {
         self.configure()
         

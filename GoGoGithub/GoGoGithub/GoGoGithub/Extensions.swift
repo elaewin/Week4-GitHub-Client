@@ -9,13 +9,30 @@
 import UIKit
 
 
+extension String {
+    
+    var isValid: Bool {
+        
+        let regexPattern = "[^0-9a-z]"
+        
+        do {
+            let regex = try NSRegularExpression(pattern: regexPattern, options: .caseInsensitive)
+            let range = NSRange(location: 0, length: (self.characters.count - 1))
+            let matches = regex.numberOfMatches(in: self, options: .reportCompletion, range: range)
+            if matches > 0 { return false }
+        } catch {
+            return false
+        }
+        return true
+    }
+}
+
 extension UIResponder {
     
     static var identifier: String {
         return String(describing: self)
     }
 }
-
 
 extension UserDefaults {
     
