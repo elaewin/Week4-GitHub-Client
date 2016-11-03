@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="136.80000000000001" y="101.19940029985008"/>
         </scene>
-        <!--User Search-->
+        <!--Repositories-->
         <scene sceneID="LRx-aM-R5O">
             <objects>
-                <viewController id="zun-8T-qkS" customClass="UserSearchViewController" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="zun-8T-qkS" customClass="HomeViewController" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ag1-HH-1cw"/>
                         <viewControllerLayoutGuide type="bottom" id="Hbm-x5-fLY"/>
@@ -90,7 +90,7 @@
                             <constraint firstItem="lxj-7i-i8o" firstAttribute="top" secondItem="Bk3-lg-LSW" secondAttribute="bottom" constant="8" id="SJO-hC-0ye"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="User Search" id="wza-fu-x4z"/>
+                    <tabBarItem key="tabBarItem" title="Repositories" id="wza-fu-x4z"/>
                     <connections>
                         <outlet property="searchBar" destination="Bk3-lg-LSW" id="DD5-9D-tTY"/>
                         <outlet property="tableView" destination="lxj-7i-i8o" id="gt9-bW-VMs"/>
@@ -101,10 +101,10 @@
             </objects>
             <point key="canvasLocation" x="2199.1999999999998" y="100.29985007496252"/>
         </scene>
-        <!--Repositories-->
+        <!--User Search-->
         <scene sceneID="W9R-fq-kz2">
             <objects>
-                <viewController id="nLn-q9-ZvJ" sceneMemberID="viewController">
+                <viewController id="nLn-q9-ZvJ" customClass="UserSearchViewController" customModule="GoGoGithub" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="2J7-H7-atJ"/>
                         <viewControllerLayoutGuide type="bottom" id="nld-DC-YZv"/>
@@ -150,7 +150,11 @@
                             <constraint firstAttribute="trailing" secondItem="dgJ-TO-JqB" secondAttribute="trailing" id="w5d-Q3-Q0s"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Repositories" id="azi-nI-boE"/>
+                    <tabBarItem key="tabBarItem" title="User Search" id="azi-nI-boE"/>
+                    <connections>
+                        <outlet property="searchBar" destination="4m8-cr-Bn0" id="Oae-a8-nGQ"/>
+                        <outlet property="tableView" destination="dgJ-TO-JqB" id="d5u-tK-cJ0"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lrx-jv-3gC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
