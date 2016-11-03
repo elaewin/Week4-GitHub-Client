@@ -21,7 +21,7 @@ class RepoTableViewCell: UITableViewCell {
         didSet {
             self.repoName.text = repo.name
             if repo.language != nil {
-                self.repoLanguage.text = repo.language
+                self.repoLanguage.text = "Language: " + repo.language!
             }
             if repo.description != nil {
                 self.repoDescription.text = repo.description

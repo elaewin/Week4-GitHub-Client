@@ -12,7 +12,7 @@ class CustomTransition: NSObject {
 
     var duration: TimeInterval
     
-    init(duration: TimeInterval = 1.0) {
+    init(duration: TimeInterval = 0.75) {
         self.duration = duration
     }
     

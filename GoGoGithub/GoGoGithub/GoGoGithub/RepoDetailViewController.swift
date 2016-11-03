@@ -28,7 +28,13 @@ class RepoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let dateFormatter = ISO8601DateFormatter()
+        
         repoName.text = repo.name
+        if let created = repo.created {
+            let createdDate = dateFormatter.date(from: created)
+            repoCreated.text = dateFormatter.string(from: createdDate!)
+        }
         repoCreated.text = repo.created
         repoUpdated.text = repo.updated
         repoLanguage.text = repo.language
