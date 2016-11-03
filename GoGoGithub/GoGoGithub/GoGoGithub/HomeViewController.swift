@@ -93,6 +93,9 @@ class HomeViewController: UIViewController {
         GitHubService.shared.fetchRepos { (repositories) in
             
             if let repositories = repositories {
+                if !self.allRepos.isEmpty {
+                    self.allRepos.removeAll()
+                }
                 for repository in repositories {
                     self.allRepos.append(repository)
                 }
@@ -138,6 +141,7 @@ extension HomeViewController: UISearchBarDelegate {
         if text != "" {
             filterResults = self.allRepos.filter { $0.name.lowercased().contains(text) }
         } else {
+            self.tableView.reloadData()
             searchBar.resignFirstResponder()
         }
     }
