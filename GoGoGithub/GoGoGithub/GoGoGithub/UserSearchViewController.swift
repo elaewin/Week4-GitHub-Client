@@ -88,6 +88,8 @@ extension UserSearchViewController: UISearchBarDelegate {
         if !searchText.isValid {
             let lastIndex = searchText.index(before: searchText.endIndex)
             searchBar.text = searchText.substring(to: lastIndex)
+        } else {
+            searchBar.showsSearchResultsButton = true
         }
         
     }

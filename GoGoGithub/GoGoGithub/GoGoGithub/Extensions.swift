@@ -17,7 +17,7 @@ extension String {
         
         do {
             let regex = try NSRegularExpression(pattern: regexPattern, options: .caseInsensitive)
-            let range = NSRange(location: 0, length: (self.characters.count - 1))
+            let range = NSRange(location: 0, length: (self.characters.count))
             let matches = regex.numberOfMatches(in: self, options: .reportCompletion, range: range)
             if matches > 0 { return false }
         } catch {
