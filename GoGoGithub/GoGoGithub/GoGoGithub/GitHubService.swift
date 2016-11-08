@@ -13,7 +13,7 @@ let kBaseUrlString = "https://github.com/login/oauth"
 typealias GitHubAuthCompletion = (Bool) -> ()
 typealias RepositoriesCompletion = ([Repository]?) -> ()
 typealias UserSearchCompletion = ([User]?) -> ()
-
+typealias ReadMeCompletion = (ReadMe?) -> ()
 
 // MARK: Enums
 enum GitHubOAuthError: Error {
@@ -50,11 +50,8 @@ class GitHubService {
     
     // MARK: Functions
     func searchUsersWith(searchTerm: String, completion: @escaping UserSearchCompletion) {
-        
         self.urlComponents.path = "/search/users"
-        
         let searchQueryItem = URLQueryItem(name: "q", value: searchTerm)
-        
         self.urlComponents.queryItems?.append(searchQueryItem)
         
         guard let url = self.urlComponents.url else { completion(nil); return }
@@ -78,6 +75,33 @@ class GitHubService {
                     print(error)
                 }
             } else { completion(nil); return }
+            
+        }).resume()
+    }
+    
+    func fetchReadMe(owner: String, repo: String, completion: @escaping ReadMeCompletion) {
+        self.urlComponents.path = "/repos/\(owner)/\(repo)/readme"
+        
+        guard let url = self.urlComponents.url else { completion(nil); return }
+        
+        self.session.dataTask(with: url, completionHandler: { (data, reponse, error) in
+            if error != nil { completion(nil); return }
+            
+            if let data = data {
+                
+                do {
+                    if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String:Any] {
+                        
+                        let readMe = ReadMe(json: json)
+                        
+                        OperationQueue.main.addOperation {
+                            completion(readMe)
+                        }
+                    }
+                } catch {
+                    print(error)
+                }
+            }
             
         }).resume()
     }

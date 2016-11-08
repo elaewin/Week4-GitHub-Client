@@ -17,6 +17,8 @@
 		55CCE06A1DCBA255002F183D /* UserSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CCE0691DCBA255002F183D /* UserSearchViewController.swift */; };
 		55CCE06C1DCBA508002F183D /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CCE06B1DCBA508002F183D /* User.swift */; };
 		55CCE06E1DCBB785002F183D /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CCE06D1DCBB785002F183D /* WebViewController.swift */; };
+		55CCE0721DCBE868002F183D /* ReadMe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CCE0711DCBE868002F183D /* ReadMe.swift */; };
+		55CCE0761DCBF30D002F183D /* ReadMeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55CCE0751DCBF30D002F183D /* ReadMeView.swift */; };
 		55E696C01DC7A92A00BD8757 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 55E696BF1DC7A92A00BD8757 /* AppDelegate.swift */; };
 		55E696C51DC7A92A00BD8757 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 55E696C31DC7A92A00BD8757 /* Main.storyboard */; };
 		55E696C71DC7A92A00BD8757 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 55E696C61DC7A92A00BD8757 /* Assets.xcassets */; };
@@ -37,6 +39,8 @@
 		55CCE0691DCBA255002F183D /* UserSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserSearchViewController.swift; sourceTree = "<group>"; };
 		55CCE06B1DCBA508002F183D /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		55CCE06D1DCBB785002F183D /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		55CCE0711DCBE868002F183D /* ReadMe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMe.swift; sourceTree = "<group>"; };
+		55CCE0751DCBF30D002F183D /* ReadMeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadMeView.swift; sourceTree = "<group>"; };
 		55E696BC1DC7A92A00BD8757 /* GoGoGithub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoGoGithub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55E696BF1DC7A92A00BD8757 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		55E696C41DC7A92A00BD8757 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 			children = (
 				55CCE0641DCA6DD6002F183D /* CustomTransition.swift */,
 				55E696C31DC7A92A00BD8757 /* Main.storyboard */,
+				55CCE0751DCBF30D002F183D /* ReadMeView.swift */,
 				55CCE0601DC95B9E002F183D /* RepoTableViewCell.swift */,
 			);
 			name = View;
@@ -113,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				55E696D51DC7C22900BD8757 /* GitHubService.swift */,
+				55CCE0711DCBE868002F183D /* ReadMe.swift */,
 				55CCE0671DCA9409002F183D /* repoCell.xib */,
 				55CCE05E1DC91ACB002F183D /* Repository.swift */,
 				55CCE06B1DCBA508002F183D /* User.swift */,
@@ -207,7 +213,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				55CCE05F1DC91ACB002F183D /* Repository.swift in Sources */,
+				55CCE0761DCBF30D002F183D /* ReadMeView.swift in Sources */,
 				55E696DA1DC7E28F00BD8757 /* Extensions.swift in Sources */,
+				55CCE0721DCBE868002F183D /* ReadMe.swift in Sources */,
 				55E696D61DC7C22900BD8757 /* GitHubService.swift in Sources */,
 				55CCE0611DC95B9E002F183D /* RepoTableViewCell.swift in Sources */,
 				55CCE06A1DCBA255002F183D /* UserSearchViewController.swift in Sources */,
